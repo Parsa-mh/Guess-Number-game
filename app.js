@@ -23,7 +23,7 @@ const guessNumber = (event) => {
     if (userNumber == "" ){
         Swal.fire({
             icon : "error",
-            title : "لطفا فسلد را خالی نگذارید"
+            title : "لطفا فیلد را خالی نگذارید"
         })
     }
     else if (userNumber > 100 || userNumber < 1){
