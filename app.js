@@ -8,7 +8,7 @@ const section = document.querySelector("#section")
 let previousGuesses = []
 
 //random number
-function random (){
+const random = ()=>{
     return Math.round(Math.random()*100)
 }
 const randomNumber = random()
@@ -16,21 +16,33 @@ const randomNumber = random()
 //chanses
 let Counter = 5
 
-function guessNumber (event){
+const guessNumber = (event) => {
     event.preventDefault()
     const userNumber = inputNumber.value
     //rules
     if (userNumber == "" ){
-        alert("لطفا فیلد را خالی نگزارید")
+        Swal.fire({
+            icon : "error",
+            title : "لطفا فسلد را خالی نگذارید"
+        })
     }
     else if (userNumber > 100 || userNumber < 1){
-        alert("لطفا اعداد بزرگ تر از 100 و یا کوچک تر از 1 وارد نکنید")
+        Swal.fire({
+            icon : "error",
+            title : "لطفا اعداد بین 1 تا 100 را انتخاب نمایید"
+        })
     }
     else if (previousGuesses.includes(userNumber)){
-        alert("این مقدار قبلا انتخاب شده")
+        Swal.fire({
+            icon : "warning",
+            title : "این مقدار قبلا انتخاب شده"
+        })
     }
-    else if (isNaN (Number (userNumber)) == true){
-        alert("مقدار وارد شده صحیح نمیباشد")
+    else if (isNaN (Number (userNumber))){
+        Swal.fire({
+            icon : "error",
+            title : "مقدار وارد شده عدد نمیباشد"
+        })
     }
     //game
     else {
@@ -126,6 +138,6 @@ function guessNumber (event){
     }
 }
 //restart button 
-function reloadGame (){
+const reloadGame = () => {
     window.location.reload()
 }
